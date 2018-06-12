@@ -1042,10 +1042,11 @@ EOT;
                 $items = $getData($id);
             }
             if (!count($items)) {  //缩小访问查找
-                $l = preg_replace("/x/", 'x', $id);
+                $l = preg_replace("/x/", 'l', $id);
                 $items = $getData($l);
                 $o = preg_replace("/x/", 'o', $id);
                 $items = array_merge($items, $getData($o));
+                              
             }
         }
         return $items;
@@ -1115,6 +1116,7 @@ EOT;
             $options[$key] = $parameter[$key];
         }
         $selectors = $this->getSelectors($options['text']);
+  
         $result = [];       //匹配结果
         for ($i = 0; $i < count($selectors); $i++) {  //遍历所有可能性
             $ids = $this->selector2id($selectors[$i], $options['sex']);
